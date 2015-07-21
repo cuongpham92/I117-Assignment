@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <stdbool.h>
 #define BASE 1000
 
 typedef struct {
@@ -105,7 +106,9 @@ bigint mult(bigint a, bigint b) {
         } else {
             product.n--;
         }
+        bigint temp = c;
         c = add(c, product);
+        free_bigint(temp);
         free_bigint(product);
     }
     return c;
@@ -127,15 +130,20 @@ bigint fact(int x) {
     return z;
 }
 
-
 int main() {
     int x = 123456789;
-    int y = 1234242353;
-    int z = 1000;
+    int y = 234;
     bigint a = convert(x);
-    bigint b = convert(y);
-    print_bigint(add(convert(999), convert(10)));
-    print_bigint(fact(1000));
+    bigint b= convert(y);
+    bigint zz;
+    while(true) {
+//        zz = mult(a,b);
+        zz = fact(10);
+        print_bigint(zz);
+        free_bigint(zz);
+    }
+    free_bigint(a);
+    free_bigint(b);
 }
 
 
