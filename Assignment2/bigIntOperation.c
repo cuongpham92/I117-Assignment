@@ -113,6 +113,22 @@ bigint mult(bigint a, bigint b) {
     }
     return c;
 }
+bigint fib(int x) {
+  if(x == 0) {
+    return convert(0);
+  }
+  
+  bigint a = convert(0);
+  bigint b = convert(1);
+  for(int i = 1; i < x; i++){
+    bigint temp = add(a,b);
+    free_bigint(a);
+    a = b;
+    b = temp;
+  }
+  free_bigint(a);
+  return b;
+}
 
 bigint fact(int x) {
     bigint t, temp;
@@ -134,16 +150,19 @@ int main() {
     int x = 123456789;
     int y = 234;
     bigint a = convert(x);
-    bigint b= convert(y);
-    bigint zz;
+    //bigint b= convert(y);
+    //bigint zz;
     while(true) {
+      bigint c = fib(5);
+      print_bigint(c);
+      free_bigint(c);
 //        zz = mult(a,b);
-        zz = fact(10);
-        print_bigint(zz);
-        free_bigint(zz);
+      //zz = fact(10);
+      // print_bigint(zz);
+      // free_bigint(zz);
     }
     free_bigint(a);
-    free_bigint(b);
+    //free_bigint(b);
 }
 
 
