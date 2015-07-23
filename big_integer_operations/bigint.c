@@ -1,12 +1,7 @@
+#include "bigint.h"
+
 #include<stdio.h>
 #include<stdlib.h>
-#include <stdbool.h>
-#define BASE 1000
-
-typedef struct {
-    int *array;
-    int n;
-} bigint;
 
 bigint convert(int x) {
     bigint a;
@@ -113,8 +108,9 @@ bigint mult(bigint a, bigint b) {
     }
     return c;
 }
+
 bigint fib(int x) {
-  if(x == 0) {
+  if(x == 0) {   //return 0 if x = 0
     return convert(0);
   }
   
@@ -132,7 +128,7 @@ bigint fib(int x) {
 
 bigint fact(int x) {
     bigint t, temp;
-    if (x == 0) {
+    if (x == 0) {  //return 1 if x = 0
         return convert(1);
     }
     bigint z = convert(1);
@@ -146,24 +142,6 @@ bigint fact(int x) {
     return z;
 }
 
-int main() {
-    int x = 123456789;
-    int y = 234;
-    bigint a = convert(x);
-    //bigint b= convert(y);
-    //bigint zz;
-    while(true) {
-      bigint c = fib(5);
-      print_bigint(c);
-      free_bigint(c);
-//        zz = mult(a,b);
-      //zz = fact(10);
-      // print_bigint(zz);
-      // free_bigint(zz);
-    }
-    free_bigint(a);
-    //free_bigint(b);
-}
 
 
 
